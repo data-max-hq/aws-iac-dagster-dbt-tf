@@ -18,8 +18,8 @@ terraform apply
 ### Configure kubectl
 To retrieve the access credentials for the cluster and configure ```kubectl```
 ```commandline
-aws eks --region us-east-1 update-kubeconfig \
-    --name weather-data-eks-1wYHi0mU
+aws eks --region region_code update-kubeconfig \
+    --name name_of_the_cluster
 
 ```
 
