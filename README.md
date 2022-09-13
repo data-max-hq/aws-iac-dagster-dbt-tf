@@ -18,8 +18,8 @@ terraform apply
 ### Configure kubectl
 To retrieve the access credentials for the cluster and configure ```kubectl```
 ```commandline
-aws eks --region us-east-1 update-kubeconfig \
-    --name weather-data-eks-1wYHi0mU
+aws eks --region region_code update-kubeconfig \
+    --name name_of_the_cluster
 
 ```
 
@@ -31,8 +31,8 @@ Use the following steps to authenticate and push an image to your repository. Fo
 Retrieve an authentication token and authenticate your Docker client to your registry.
 Use the AWS CLI:
 
-```
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 247010350437.dkr.ecr.us-east-1.amazonaws.com
+```commandline
+aws ecr get-login-password --region <region_code> | docker login --username AWS --password-stdin <account_id>.dkr.ecr.<region_code>.amazonaws.com
 ```
 Note: if you receive an error using the AWS CLI, make sure that you have the latest version of the AWS CLI and Docker installed.
 Build your Docker image using the following command. For information on building a Docker file from scratch, see the instructions here . You can skip this step if your image has already been built:
@@ -44,14 +44,14 @@ docker build -t weather-data-on-dagster .
 After the build is completed, tag your image so you can push the image to this repository:
 
 ```commandline
-docker tag weather-data-on-dagster:latest 247010350437.dkr.ecr.us-east-1.amazonaws.com/weather-data-on-dagster:latest
+docker tag weather-data-on-dagster:latest <account_id>.dkr.ecr.us-east-1.amazonaws.com/weather-data-on-dagster:latest
 
 ```
 
 Run the following command to push this image to your newly created AWS repository:
 ```commandline
 
-docker push 247010350437.dkr.ecr.us-east-1.amazonaws.com/weather-data-on-dagster:latest
+docker push <account_id>.dkr.ecr.<region_code>.amazonaws.com/weather-data-on-dagster:latest
 ```
 
 
