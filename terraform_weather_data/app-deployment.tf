@@ -43,6 +43,7 @@ resource "kubernetes_deployment" "dagster" {
             value = data.aws_secretsmanager_secret_version.api-key.secret_string
           }
 
+
         }
 
 
