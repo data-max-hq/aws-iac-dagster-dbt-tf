@@ -13,13 +13,13 @@ resource "kubernetes_deployment" "dagster" {
     replicas = 1
     selector {
       match_labels = {
-        app = "DagsterApp"
+        app = "dagster-deployment"
       }
     }
     template {
       metadata {
         labels = {
-          app = "DagsterApp"
+          app = "dagster-deployment"
         }
       }
       spec {
