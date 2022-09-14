@@ -13,13 +13,13 @@ resource "kubernetes_deployment" "dagster" {
     replicas = 1
     selector {
       match_labels = {
-        app = "DagsterApp"
+        app = "dagster-deployment"
       }
     }
     template {
       metadata {
         labels = {
-          app = "DagsterApp"
+          app = "dagster-deployment"
         }
       }
       spec {
@@ -42,6 +42,7 @@ resource "kubernetes_deployment" "dagster" {
             name  = "API_KEY"
             value = data.aws_secretsmanager_secret_version.api-key.secret_string
           }
+
 
         }
 
