@@ -12,9 +12,15 @@ data "aws_availability_zones" "available" {}
 
 locals {
   cluster_name = "weather-data-eks-${random_string.suffix.result}"
+  bucket_name  = "weather-data-bucket-${lower(random_string.bucket-suffix.result)}"
 }
 
 resource "random_string" "suffix" {
+  length  = 8
+  special = false
+}
+
+resource "random_string" "bucket-suffix" {
   length  = 8
   special = false
 }
