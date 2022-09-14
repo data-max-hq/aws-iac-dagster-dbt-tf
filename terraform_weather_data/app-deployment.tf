@@ -25,8 +25,10 @@ resource "kubernetes_deployment" "dagster" {
       spec {
         container {
           #          image = "aldosula/dagster-dbt:eks"
-          image = "${data.aws_ecr_repository.image.repository_url}:latest"
+#          image = "${data.aws_ecr_repository.image.repository_url}:latest"
+          image = "dagster/user-code-example:latest"
           name  = "dagster"
+          image_pull_policy = "IfNotPresent"
           port {
             container_port = 3000
           }
@@ -42,16 +44,13 @@ resource "kubernetes_deployment" "dagster" {
             name  = "API_KEY"
             value = data.aws_secretsmanager_secret_version.api-key.secret_string
           }
-          image_pull_policy = "Always"
-
         }
-
-
       }
     }
   }
   depends_on = [aws_ecr_repository.weather-data-on-dagster, aws_secretsmanager_secret.api-key, aws_secretsmanager_secret.aws-access-key-id, aws_secretsmanager_secret.aws-secret-access-key]
 }
+
 resource "kubernetes_service" "dagster" {
   metadata {
     name      = "dagster"
