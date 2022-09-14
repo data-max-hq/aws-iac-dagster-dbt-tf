@@ -42,7 +42,7 @@ resource "kubernetes_deployment" "dagster" {
             name  = "API_KEY"
             value = data.aws_secretsmanager_secret_version.api-key.secret_string
           }
-
+          image_pull_policy = "Always"
 
         }
 

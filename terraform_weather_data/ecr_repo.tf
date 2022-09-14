@@ -30,3 +30,7 @@ resource "aws_ecr_lifecycle_policy" "weather-data-on-dagster" {
 }
 EOF
 }
+
+data "aws_ecr_repository" "image" {
+  name = aws_ecr_repository.weather-data-on-dagster.name
+}
