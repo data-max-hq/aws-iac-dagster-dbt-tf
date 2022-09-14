@@ -49,7 +49,7 @@ resource "kubernetes_deployment" "dagster" {
       }
     }
   }
-  depends_on = [aws_ecr_repository.weather-data-on-dagster,aws_secretsmanager_secret.api-key, aws_secretsmanager_secret.aws-access-key-id, aws_secretsmanager_secret.aws-secret-access-key]
+  depends_on = [aws_ecr_repository.weather-data-on-dagster, aws_secretsmanager_secret.api-key, aws_secretsmanager_secret.aws-access-key-id, aws_secretsmanager_secret.aws-secret-access-key]
 }
 resource "kubernetes_service" "dagster" {
   metadata {
