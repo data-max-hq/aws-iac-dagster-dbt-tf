@@ -29,10 +29,9 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Terraform fmt
-          uses: hashicorp/setup-terraform@v2
-          id: fmt
-          working-directory: ./terraform_weather_data
-          run: terraform fmt 
+        id: fmt
+        working-directory: ./terraform_weather_data
+        run: terraform fmt 
 
         - name: Terraform Init
           id: init
