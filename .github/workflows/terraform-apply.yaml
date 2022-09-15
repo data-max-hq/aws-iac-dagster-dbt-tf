@@ -33,17 +33,17 @@ jobs:
         working-directory: ./terraform_weather_data
         run: terraform fmt 
 
-        - name: Terraform Init
-          id: init
-          working-directory: ./terraform_weather_data
-          run: terraform init
+      - name: Terraform Init
+        id: init
+        working-directory: ./terraform_weather_data
+        run: terraform init
 
-        - name: Terraform Validate
-          id: validate
-          working-directory: ./terraform_weather_data
-          run: terraform validate
+      - name: Terraform Validate
+        id: validate
+        working-directory: ./terraform_weather_data
+        run: terraform validate
 
-        - name: Terraform Apply
-          id: apply
-          working-directory: ./terraform_weather_data
-          run: terraform apply -auto-approve
+      - name: Terraform Apply
+        id: apply
+        working-directory: ./terraform_weather_data
+        run: terraform apply -auto-approve
