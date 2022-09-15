@@ -10,9 +10,6 @@ on:
 env:
   ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
   ECR_REPOSITORY: weather-data-on-dagster
-  IMAGE_TAG: latest
-  EKS_CLUSTER_NAME: weather-data-eks-mpUrqB2H
-  K8S_DEPLOYMENT: dagster-deployment
   REGION: us-east-1
   NAMESPACE: dagster-dbt
 
@@ -23,7 +20,7 @@ jobs:
     steps:
       - uses: hashicorp/setup-terraform@v2
       - uses: actions/checkout@v3
-
+ 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
