@@ -39,6 +39,9 @@ Fill the secrets in ```Secret Manager``` with accurate values, then rerun ```ter
 
 ### Configure kubectl
 To retrieve the access credentials for the cluster and configure ```kubectl```
+
+(Replace ```region_code``` with the AWS cluster region and ```name_of_the_cluster``` witht your cluster name)
+
 ```commandline
 aws eks --region region_code update-kubeconfig \
     --name name_of_the_cluster
