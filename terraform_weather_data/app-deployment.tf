@@ -26,9 +26,9 @@ resource "kubernetes_deployment" "dagster" {
         container {
           #          image = "aldosula/dagster-dbt:eks"
 #          image = "${data.aws_ecr_repository.image.repository_url}:latest"
-          image = "dagster/user-code-example:latest"
+          image = "aldosula/dagster-example:latest"
           name  = "dagster"
-          image_pull_policy = "IfNotPresent"
+          image_pull_policy = "Always"
           port {
             container_port = 3000
           }
