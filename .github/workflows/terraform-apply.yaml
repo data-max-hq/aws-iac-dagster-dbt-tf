@@ -17,13 +17,12 @@ env:
   NAMESPACE: dagster-dbt
 
 jobs:
-  build-push:
+  apply:
     name: Build infrastructure
     runs-on: ubuntu-latest
     steps:
       - uses: hashicorp/setup-terraform@v2
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -39,7 +38,7 @@ jobs:
       - name: Terraform fmt
           id: fmt
           working-directory: ./terraform_weather_data
-          run: terraform fmt -check
+          run: terraform fmt 
 
         - name: Terraform Init
           id: init
