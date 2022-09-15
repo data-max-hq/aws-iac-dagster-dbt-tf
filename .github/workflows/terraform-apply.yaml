@@ -7,11 +7,6 @@ on:
   workflow_dispatch:
       branches:
         - main
-env:
-  ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
-  ECR_REPOSITORY: weather-data-on-dagster
-  REGION: us-east-1
-  NAMESPACE: dagster-dbt
 
 jobs:
   apply:
@@ -26,13 +21,15 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.REGION }}
+          aws-region: us-east-1
 
       - name: Login to Amazon ECR
+
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Terraform fmt
+          uses: hashicorp/setup-terraform@v2
           id: fmt
           working-directory: ./terraform_weather_data
           run: terraform fmt 
