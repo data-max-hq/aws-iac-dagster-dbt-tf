@@ -11,7 +11,7 @@ provider "aws" {
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = "weather-data-eks-${random_string.suffix.result}"
+  cluster_name = "dagster-weather-data-eks-${random_string.suffix.result}"
   bucket_name  = "weather-data-bucket-${lower(random_string.bucket-suffix.result)}"
 }
 
