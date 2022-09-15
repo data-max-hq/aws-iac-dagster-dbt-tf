@@ -4,7 +4,9 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = "1.20"
   subnets         = module.vpc.private_subnets
-
+  tags = {
+    name = "dagster"
+  }
   vpc_id = module.vpc.vpc_id
 
   workers_group_defaults = {
